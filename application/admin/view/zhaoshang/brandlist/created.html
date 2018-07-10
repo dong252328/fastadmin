@@ -1,0 +1,35 @@
+<div class="message">
+    {volist name="message" id="mes"}
+    <div>
+        <h4 style="color:#FF5722;">{$mes.admin_nickname} ： {$mes.createtime}</h4>
+        <h4 style="color:#01AAED;margin-left: 40px">{$mes.action} ： {$mes.content}</h4>
+    </div>
+    <br>
+    {/volist}
+</div>
+
+<form id="edit-form" class="form-horizontal form-ajax" role="form" method="POST" action="" name="myform">
+    <input type="hidden" name="brand_sta">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">评论:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control" id="condition" name="content"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择处理人:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_select('pro_person', $admin, '', ['class'=>'form-control', 'required'=>''])}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-12 col-sm-8">
+            <button type="button" class="btn btn-success btn-embossed" onclick="myform.brand_sta.value=2;myform.submit()">流转</button>
+            <button type="submit" class="btn btn-success btn-embossed" onclick="myform.brand_sta.value=10;myform.submit()">通过审核</button>
+            <button type="submit" class="btn btn-success btn-embossed" onclick="myform.brand_sta.value=41;myform.submit()">驳回</button>
+        </div>
+    </div>
+</form>
+{include file="auth/rule/tpl" /}
+

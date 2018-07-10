@@ -270,4 +270,17 @@ class User extends Frontend
         return $this->view->fetch();
     }
 
+
+    public function brand_shop(){
+        $brand = db('Brand')->where('add_member',$this->auth->id)->find();
+        $brand_tag = db('BrandTags')->select();
+        $new_shop = db('BrandNewShop')->where('brand_id',$brand['id'])->select();
+
+        $this->view->assign('title', __('User brand_shop'));
+        $this->view->assign('tag',$brand_tag);
+        $this->view->assign('brand', $brand);
+        $this->view->assign('new_shop', $new_shop);
+        return $this->view->fetch();
+    }
+
 }

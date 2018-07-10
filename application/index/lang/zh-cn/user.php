@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'User center'                           => '会员中心',
     'Register'                              => '注册',
     'Login'                                 => '登录',
@@ -64,4 +65,27 @@ return [
     'Invalid parameters'                    => '参数不正确',
     'Change password failure'               => '修改密码失败',
     'Change password successful'            => '修改密码成功',
+
+
+    /*brand*/
+    'brand infomation'=> '品牌基本信息',
+    'User person_shop' => '个人店铺',
+    'User brand_shop'=> '品牌店铺',
+    'cn_name'=> '中文名',
+    'en_name'=> '英文名',
+    'tel'=> '联系电话',
+    'brand_address'=> '品牌原产地',
+    'tag_id'=> '所属品类',
+    'count_num'=> '全国店面数 （含专卖店）',
+    'brand_model'=> '同品类同级次品牌',
+    'brand new shop'=> '近两年全国新开店情况',
+
+    /*brand shop*/
+    'city'=>'城市',
+    'coopreation_area'=>'合作商圈',
+    'belong_area'=>'所属商圈',
+    'openning_hours'=>'商场开业时间',
+    'brand_name'=>'品牌名称',
+    'year_turnover1'=>'16年营业额',
+    'year_turnover2'=>'17年营业额',
 ];

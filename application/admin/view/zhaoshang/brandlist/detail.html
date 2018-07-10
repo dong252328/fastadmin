@@ -1,0 +1,174 @@
+<style>
+    .black {
+        color: #000
+    }
+
+    .info-box {
+        background-color: #fff;
+        padding: 15px;
+        margin-top: 15px;
+    }
+</style>
+
+<div class="layui-container">
+    <div class="info-box">
+        <h3 class="black">基本信息</h3>
+
+        <div style="padding-left: 40px;">
+            <table class="black" style="width: 100%;">
+                <tr height="40px;">
+                    <td width="100px"><h4>品牌名称</h4></td>
+                    <td><h4>{$row.cn_name}</h4></td>
+                    <td></td>
+                    <td width="100px">英文名名称</td>
+                    <td>{$row.en_name}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>品牌原产地</h4></td>
+                    <td><h4>{$row.brand_address}</h4></td>
+                    <td></td>
+                    <td>联系方式</td>
+                    <td>{$row.tel}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>全国店面数量</h4></td>
+                    <td><h4>{$row.count_num}</h4></td>
+                    <td></td>
+                    <td>所属品类</td>
+                    <td>{$tag.tag_name}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>楼层</h4></td>
+                    <td><h4>{$tag.floor}</h4></td>
+                    <td></td>
+                    <td>联系人</td>
+                    <td>{$tag.contact_person}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <div class="info-box">
+        <h3 class="black">近两年全国开店情况</h3>
+
+        <div style="padding-left: 40px;">
+
+            {volist name="new_shop" id="shop" key="k"}
+            <table class="black" style="width: 100%;">
+                <tr height="40px;">
+                    <td width="100px"><h4>序号</h4></td>
+                    <td><h4>{$k}</h4></td>
+                    <td></td>
+                    <td width="100px">城市</td>
+                    <td>{$shop.city}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>合作商场</h4></td>
+                    <td><h4>{$shop.coopreation_area}</h4></td>
+                    <td></td>
+                    <td>所属商圈</td>
+                    <td>{$shop.belong_area}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>开店时间</h4></td>
+                    <td><h4>{$shop.openning_hours}</h4></td>
+                    <td></td>
+                    <td>品牌</td>
+                    <td>{$shop.brand_name}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>年营业额</h4></td>
+                    <td><h4>{$shop.year_turnover1}亿元</h4></td>
+                    <td></td>
+                    <td>{$shop.year_turnover2}亿元</td>
+                </tr>
+            </table>
+            <div style="border:1px solid #292B34"></div>
+            {/volist}
+
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3 class="black">全国标杆店面情况</h3>
+
+        <div style="padding-left: 40px;">
+
+            {volist name="model_shop" id="shop" key="k"}
+            <table class="black" style="width: 100%;">
+                <tr height="40px;">
+                    <td width="100px"><h4>序号</h4></td>
+                    <td><h4>{$k}</h4></td>
+                    <td></td>
+                    <td width="100px">城市</td>
+                    <td>{$shop.city}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>合作商场</h4></td>
+                    <td><h4>{$shop.coopreation_area}</h4></td>
+                    <td></td>
+                    <td>所属商圈</td>
+                    <td>{$shop.belong_area}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>开店时间</h4></td>
+                    <td><h4>{$shop.openning_hours}</h4></td>
+                    <td></td>
+                    <td>品牌</td>
+                    <td>{$shop.brand_name}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>年营业额</h4></td>
+                    <td><h4>{$shop.year_turnover1}亿元</h4></td>
+                    <td></td>
+                    <td>{$shop.year_turnover2}亿元</td>
+                </tr>
+            </table>
+            <div style="border:1px solid #292B34"></div>
+            {/volist}
+
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3 class="black">全国最差店面情况</h3>
+
+        <div style="padding-left: 40px;">
+
+            {volist name="worst_shop" id="shop" key="k"}
+            <table class="black" style="width: 100%;">
+                <tr height="40px;">
+                    <td width="100px"><h4>序号</h4></td>
+                    <td><h4>{$k}</h4></td>
+                    <td></td>
+                    <td width="100px">城市</td>
+                    <td>{$shop.city}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>合作商场</h4></td>
+                    <td><h4>{$shop.coopreation_area}</h4></td>
+                    <td></td>
+                    <td>所属商圈</td>
+                    <td>{$shop.belong_area}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>开店时间</h4></td>
+                    <td><h4>{$shop.openning_hours}</h4></td>
+                    <td></td>
+                    <td>品牌</td>
+                    <td>{$shop.brand_name}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>年营业额</h4></td>
+                    <td><h4>{$shop.year_turnover1}亿元</h4></td>
+                    <td></td>
+                    <td>{$shop.year_turnover2}亿元</td>
+                </tr>
+            </table>
+            <div style="border:1px solid #292B34"></div>
+            {/volist}
+
+        </div>
+    </div>
+
+</div>
