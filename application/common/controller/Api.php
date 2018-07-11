@@ -4,6 +4,7 @@ namespace app\common\controller;
 
 use app\common\library\Auth;
 use think\Config;
+use think\Controller;
 use think\exception\HttpResponseException;
 use think\exception\ValidateException;
 use think\Hook;
