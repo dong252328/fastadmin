@@ -22,11 +22,11 @@ return [
     // 用户名
     'username'        => Env::get('database.username', 'root'),
     // 密码
-    'password'        => Env::get('database.password', 'root'),
+    'password'        => Env::get('database.password', '%T$R#E@W!Q'),
     // 端口
-    'hostport'        => Env::get('database.hostport', ''),
+    'hostport'        => Env::get('database.hostport', '3306'),
     // 连接dsn
-    'dsn'             => '',
+    'dsn'             => '',#E@W!Q
     // 数据库连接参数
     'params'          => [],
     // 数据库编码默认采用utf8
