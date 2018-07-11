@@ -107,7 +107,6 @@ class Backend extends Controller
 
     public function _initialize()
     {
-        \think\Url::root('index.php');
         $modulename = $this->request->module();
         $controllername = strtolower($this->request->controller());
         $actionname = strtolower($this->request->action());

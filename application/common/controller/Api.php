@@ -92,7 +92,6 @@ class Api
      */
     protected function _initialize()
     {
-        \think\Url::root('index.php');
         //移除HTML标签
         $this->request->filter('strip_tags');
 

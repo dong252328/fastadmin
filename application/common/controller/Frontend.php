@@ -40,7 +40,6 @@ class Frontend extends Controller
 
     public function _initialize()
     {
-        \think\Url::root('index.php');
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
