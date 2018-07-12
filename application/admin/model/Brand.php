@@ -24,7 +24,7 @@ class Brand extends Model
     /*定义status状态*/
     public function getStatusAttr($value)
     {
-        $status = [1=>'待审核',2=>'流转中',10=>'审核通过',41=>'被驳回'];
+        $status = [0=>'隐藏',1=>'待审核',2=>'流转中',10=>'审核通过',41=>'被驳回'];
         return $status[$value];
     }
 
