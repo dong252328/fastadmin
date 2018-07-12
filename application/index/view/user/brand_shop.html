@@ -86,6 +86,9 @@
     .modal-dialog {
         margin: 50px auto;
     }
+    .control-label{
+        font-size: 15px;
+    }
 </style>
 <div id="content-container" class="container">
     <div class="row">
@@ -168,6 +171,151 @@
 
             </div>
 
+
+            <!--货品信息-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header" style="position: relative">
+                        {:__('brand goods info')}
+                        <i class="fa fa-plus addbrand" style="position: absolute;right: 0px;bottom: 12px;"
+                           data-toggle="modal" data-target="#GoodsInfo"></i>
+                        <div class="clear"></div>
+                        <div class="modal fade" id="GoodsInfo" tabindex="-1" role="dialog" aria-labelledby="GoodsInfo"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form class="form-horizontal" role="form" data-toggle="validator"
+                                          method="POST"
+                                          action="{:url('index/user/goodsinfo')}">
+                                        {:token()}
+                                        <!--<input type="hidden" name="model" value="BrandWorstShop">-->
+                                        <input type="hidden" name="brand_id" value="{$brand.id}">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title">
+                                                {:__('brand goods info')}
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!--form input-->
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('goods_type')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="goods_type"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('Main sales')}</label>
+                                                <div class="col-xs-5 col-sm-4">
+                                                    <input type="number" class="form-control" name="main_min"
+                                                           placeholder="">
+                                                </div>
+                                                <div class="col-xs-1 col-sm-1">-</div>
+                                                <div class="col-xs-5 col-sm-4">
+                                                    <input type="number" class="form-control" name="main_max"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('Complete sales')}</label>
+                                                <div class="col-xs-5 col-sm-4">
+                                                    <input type="number" class="form-control" name="complete_min"
+                                                           placeholder="">
+                                                </div>
+                                                <div class="col-xs-1 col-sm-1">-</div>
+                                                <div class="col-xs-5 col-sm-4">
+                                                    <input type="number" class="form-control" name="complete_max"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </h2>
+
+
+                    {volist name="goodsinfo" id="ns"}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#GoodsInfo{$ns.id}">
+                                    {$ns.goods_type}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="GoodsInfo{$ns.id}" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding: 0">
+                                <form class="form-horizontal" role="form" data-toggle="validator" method="POST"
+                                      action="{:url('index/user/goodsinfo')}">
+                                    {:token()}
+                                    <input type="hidden" name="id" value="{$ns.id}">
+                                    <!--form input-->
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('goods_type')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="goods_type" value="{$ns.goods_type}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('Main sales')}</label>
+                                        <div class="col-xs-5 col-sm-4">
+                                            <input type="number" class="form-control" name="main_min"  value="{$ns.main_min}"
+                                                   placeholder="">
+                                        </div>
+                                        <div class="col-xs-1 col-sm-1">-</div>
+                                        <div class="col-xs-5 col-sm-4">
+                                            <input type="number" class="form-control" name="main_max"  value="{$ns.main_max}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('Complete sales')}</label>
+                                        <div class="col-xs-5 col-sm-4">
+                                            <input type="number" class="form-control" name="complete_min" value="{$ns.complete_min}"
+                                                   placeholder="">
+                                        </div>
+                                        <div class="col-xs-1 col-sm-1">-</div>
+                                        <div class="col-xs-5 col-sm-4">
+                                            <input type="number" class="form-control" name="complete_max" value="{$ns.complete_max}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group normal-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed ">{:__('Ok')}
+                                            </button>
+                                            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/volist}
+
+                </div>
+
+            </div>
+
             <!--近两年开店情况-->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -192,7 +340,7 @@
                                                 &times;
                                             </button>
                                             <h4 class="modal-title" id="myModalLabel">
-                                                添加近两年新开店情况
+                                                {:__('brand new shop')}
                                             </h4>
                                         </div>
                                         <div class="modal-body">
@@ -355,6 +503,384 @@
                 </div>
 
             </div>
+
+            <!--近两年开店情况-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header" style="position: relative">
+                        {:__('brand model shop')}
+                        <i class="fa fa-plus addbrand" style="position: absolute;right: 0px;bottom: 12px;"
+                           data-toggle="modal" data-target="#myModalShop"></i>
+                        <div class="clear"></div>
+                        <div class="modal fade" id="myModalShop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form class="form-horizontal" role="form" data-toggle="validator"
+                                          method="POST"
+                                          action="{:url('index/user/shop_infomation')}">
+                                        {:token()}
+                                        <input type="hidden" name="model" value="BrandModelShop">
+                                        <input type="hidden" name="brand_id" value="{$brand.id}">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="ModelShop">
+                                                {:__('brand model shop')}
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!--form input-->
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('city')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="city"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('coopreation_area')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="coopreation_area"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('belong_area')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="belong_area"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('openning_hours')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="date" class="form-control datetimepicker" name="openning_hours"
+                                                           data-format=" YYYY-MM-DD"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('brand_name')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="brand_name"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover1')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="number" class="form-control" name="year_turnover1"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover2')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="number" class="form-control" name="year_turnover2"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </h2>
+
+
+                    {volist name="model_shop" id="ns"}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#model_shop{$ns.id}">
+                                    {$ns.city}/{$ns.coopreation_area}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="model_shop{$ns.id}" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding: 0">
+                                <form class="form-horizontal" role="form" data-toggle="validator" method="POST"
+                                      action="{:url('index/user/shop_infomation')}">
+                                    {:token()}
+                                    <input type="hidden" name="id" value="{$ns.id}">
+                                    <input type="hidden" name="model" value="BrandModelShop">
+                                    <!--form input-->
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('city')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="city" value="{$ns.city}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('coopreation_area')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="coopreation_area"
+                                                   value="{$ns.coopreation_area}" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('belong_area')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="belong_area"
+                                                   value="{$ns.belong_area}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('openning_hours')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="date" class="form-control datetimepicker" name="openning_hours"
+                                                   data-format=" YYYY-MM-DD"
+                                                   value="{$ns.openning_hours}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('brand_name')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="brand_name"
+                                                   value="{$ns.brand_name}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover1')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="number" class="form-control" name="year_turnover1"
+                                                   value="{$ns.year_turnover1}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover2')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="number" class="form-control" name="year_turnover2"
+                                                   value="{$ns.year_turnover2}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group normal-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed ">{:__('Ok')}
+                                            </button>
+                                            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/volist}
+
+                </div>
+
+            </div>
+
+            <!--全国最差店面情况-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header" style="position: relative">
+                        {:__('brand worst shop')}
+                        <i class="fa fa-plus addbrand" style="position: absolute;right: 0px;bottom: 12px;"
+                           data-toggle="modal" data-target="#myWorstShop"></i>
+                        <div class="clear"></div>
+                        <div class="modal fade" id="myWorstShop" tabindex="-1" role="dialog" aria-labelledby="myWorstShop"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form class="form-horizontal" role="form" data-toggle="validator"
+                                          method="POST"
+                                          action="{:url('index/user/shop_infomation')}">
+                                        {:token()}
+                                        <input type="hidden" name="model" value="BrandWorstShop">
+                                        <input type="hidden" name="brand_id" value="{$brand.id}">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="WorstShop">
+                                                {:__('brand worst shop')}
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!--form input-->
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('city')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="city"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('coopreation_area')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="coopreation_area"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('belong_area')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="belong_area"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('openning_hours')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="date" class="form-control datetimepicker" name="openning_hours"
+                                                           data-format=" YYYY-MM-DD"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('brand_name')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="text" class="form-control" name="brand_name"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover1')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="number" class="form-control" name="year_turnover1"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover2')}</label>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <input type="number" class="form-control" name="year_turnover2"
+                                                           placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </h2>
+
+
+                    {volist name="worst_shop" id="ns"}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#worst_shop{$ns.id}">
+                                    {$ns.city}/{$ns.coopreation_area}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="worst_shop{$ns.id}" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding: 0">
+                                <form class="form-horizontal" role="form" data-toggle="validator" method="POST"
+                                      action="{:url('index/user/shop_infomation')}">
+                                    {:token()}
+                                    <input type="hidden" name="id" value="{$ns.id}">
+                                    <input type="hidden" name="model" value="BrandWorstShop">
+                                    <!--form input-->
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('city')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="city" value="{$ns.city}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('coopreation_area')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="coopreation_area"
+                                                   value="{$ns.coopreation_area}" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('belong_area')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="belong_area"
+                                                   value="{$ns.belong_area}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('openning_hours')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="date" class="form-control datetimepicker" name="openning_hours"
+                                                   data-format=" YYYY-MM-DD"
+                                                   value="{$ns.openning_hours}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('brand_name')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="brand_name"
+                                                   value="{$ns.brand_name}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover1')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="number" class="form-control" name="year_turnover1"
+                                                   value="{$ns.year_turnover1}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">{:__('year_turnover2')}</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="number" class="form-control" name="year_turnover2"
+                                                   value="{$ns.year_turnover2}"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group normal-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed ">{:__('Ok')}
+                                            </button>
+                                            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/volist}
+
+                </div>
+
+            </div>
+
+
         </div>
     </div>
 </div>

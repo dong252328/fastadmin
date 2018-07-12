@@ -278,6 +278,9 @@ class User extends Frontend
         $brand = db('Brand')->where('add_member',$this->auth->id)->find();
         $brand_tag = db('BrandTags')->select();
         $new_shop = db('BrandNewShop')->where('brand_id',$brand['id'])->select();
+        $model_shop = db('BrandModelShop')->where('brand_id',$brand['id'])->select();
+        $worst_shop = db('BrandWorstShop')->where('brand_id',$brand['id'])->select();
+        $goodsinfo = db('GoodsInfo')->where('brand_id',$brand['id'])->select();
         foreach ($brand_tag as $tag){
             $options[$tag['id']] = $tag['floor'].'/'.$tag['tag_name'];
         }
@@ -286,6 +289,9 @@ class User extends Frontend
         $this->view->assign('title', __('User brand_shop'));
         $this->view->assign('brand', $brand);
         $this->view->assign('new_shop', $new_shop);
+        $this->view->assign('model_shop', $model_shop);
+        $this->view->assign('worst_shop', $worst_shop);
+        $this->view->assign('goodsinfo', $goodsinfo);
         $this->view->assign('tags', $tags);
         return $this->view->fetch();
     }
@@ -299,7 +305,9 @@ class User extends Frontend
             'tel'=>'require',
             'brand_address'=>'require',
             'tag_id'=>'number',
+            'tag_id'=>'require',
             'count_num'=>'number',
+            'count_num'=>'require',
             'brand_model'=>'require',
         ];
         $validate = new Validate($rule);
@@ -334,15 +342,51 @@ class User extends Frontend
             'openning_hours'=>'require',
             'brand_name'=>'require',
             'year_turnover1'=>'number',
+            'year_turnover1'=>'require',
             'year_turnover2'=>'number',
+            'year_turnover2'=>'require',
         ];
-        $model = model($post['model']);
         $validate = new Validate($rule);
         $result = $validate->check($post);
         if(!$result){
             $this->error($validate->getError());
         }
         $model = model($post['model']);
+        if(isset($post['id'])){
+            // edit;
+            $id = $post['id'];
+            unset($post['id']);
+            $model->allowField(true)->save($post,['id'=>$id]);
+            $this->success('修改成功');
+        }else{
+            // add;
+            $model->allowField(true)->save($post);
+            $this->success('添加成功');
+        }
+
+    }
+
+    /*修改和添加 goods*/
+    public function goodsinfo() {
+        $post = input('post.' ,null);
+        $rule = [
+            'goods_type'=>'require',
+            'main_min'=>'number',
+            'main_min'=>'require',
+            'main_max'=>'number',
+            'main_max'=>'require',
+            'complete_min'=>'number',
+            'complete_min'=>'require',
+            'complete_max'=>'number',
+            'complete_max'=>'require',
+        ];
+
+        $validate = new Validate($rule);
+        $result = $validate->check($post);
+        if(!$result){
+            $this->error($validate->getError());
+        }
+        $model = model('GoodsInfo');
         if(isset($post['id'])){
             // edit;
             $id = $post['id'];

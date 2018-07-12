@@ -79,6 +79,9 @@ return [
     'count_num'=> '全国店面数 （含专卖店）',
     'brand_model'=> '同品类同级次品牌',
     'brand new shop'=> '近两年全国新开店情况',
+    'brand model shop'=> '全国标杆店面情况',
+    'brand worst shop'=> '全国最差店面情况',
+    'brand goods info'=> '货品信息',
 
     /*brand shop*/
     'city'=>'城市',
@@ -88,4 +91,10 @@ return [
     'brand_name'=>'品牌名称',
     'year_turnover1'=>'16年营业额',
     'year_turnover2'=>'17年营业额',
+
+    /*goods info*/
+    'goods type'=>'货品类别',
+    'Main sales'=>'主力销售价格区间',
+    'Complete sales'=>'完整价格区间',
+
 ];
