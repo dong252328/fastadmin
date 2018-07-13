@@ -12,21 +12,6 @@ return array (
     array (
       0 => 'markdown',
     ),
-    'sms_send' => 
-    array (
-      0 => 'rlsms',
-      1 => 'smsbao',
-    ),
-    'sms_notice' => 
-    array (
-      0 => 'rlsms',
-      1 => 'smsbao',
-    ),
-    'sms_check' => 
-    array (
-      0 => 'rlsms',
-      1 => 'smsbao',
-    ),
     'upload_after' => 
     array (
       0 => 'thumb',
