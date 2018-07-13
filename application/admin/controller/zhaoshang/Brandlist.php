@@ -89,10 +89,12 @@ class Brandlist extends Backend
         $new_shop = db('BrandNewShop')->where('brand_id', $ids)->select();
         $model_shop = db('BrandModelShop')->where('brand_id', $ids)->select();
         $worst_shop = db('BrandWorstShop')->where('brand_id', $ids)->select();
+        $goodsinfo = db('GoodsInfo')->where('brand_id', $ids)->select();
         $this->view->assign("row", $row->toArray());
         $this->assign('new_shop', $new_shop);
         $this->assign('model_shop', $model_shop);
         $this->assign('worst_shop', $worst_shop);
+        $this->assign('goodsinfo', $goodsinfo);
         $this->assign('tag', $tag);
         return $this->view->fetch();
     }

@@ -49,6 +49,33 @@
         </div>
     </div>
     <div class="info-box">
+        <h3 class="black">商品信息</h3>
+
+        <div style="padding-left: 40px;">
+
+            {volist name="goodsinfo" id="shop" key="k"}
+            <table class="black" style="width: 100%;">
+                <tr height="40px;">
+                    <td width="100px"><h4>序号</h4></td>
+                    <td><h4>{$k}</h4></td>
+                    <td></td>
+                    <td width="100px">商品类型</td>
+                    <td>{$shop.goods_type}</td>
+                </tr>
+                <tr height="40px;">
+                    <td><h4>主力销售价格区间</h4></td>
+                    <td><h4>{$shop.main_min}-{$shop.main_max}</h4></td>
+                    <td></td>
+                    <td>完整销售价格区间</td>
+                    <td>{$shop.complete_min}-{$shop.complete_max}</td>
+                </tr>
+            </table>
+            <div style="border:1px solid #292B34"></div>
+            {/volist}
+
+        </div>
+    </div>
+    <div class="info-box">
         <h3 class="black">近两年全国开店情况</h3>
 
         <div style="padding-left: 40px;">
