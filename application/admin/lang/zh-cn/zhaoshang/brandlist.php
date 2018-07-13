@@ -20,5 +20,9 @@ return [
     'Brandtags.fuze_person'  =>  '负责人',
     'Brandtags.fuze_per_tel'  =>  '联系电话',
     'Brandtags.contact_person'  =>  '联系人',
-    'Brandtags.contact_per_tel'  =>  '电话'
+    'Brandtags.contact_per_tel'  =>  '电话',
+
+
+
+    'my brand list'  =>  '我负责的',
 ];

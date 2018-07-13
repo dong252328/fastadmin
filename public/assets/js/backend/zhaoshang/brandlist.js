@@ -29,21 +29,21 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'en_name', title: __('En_name')},
                         {field: 'tel', title: __('Tel')},
                         {field: 'brand_address', title: __('Brand_address')},
-                        // {field: 'tag_id', title: __('Tag_id')},
+                        {field: 'tag_id', title: __('Tag_id'),visible:false},
                         {field: 'count_num', title: __('Count_num')},
-                        // {field: 'brand_level', title: __('Brand_level')},
+                        {field: 'brand_level', title: __('Brand_level'),visible:false},
                         {field: 'brand_model', title: __('Brand_model')},
                         {field: 'status', title: __('Status')},
-                        // {field: 'pro_person', title: __('Pro_person')},
-                        // {field: 'add_member', title: __('Add_member')},
-                        {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange'},
-                        // {field: 'brandtags.id', title: __('Brandtags.id')},
+                        {field: 'pro_person', title: __('Pro_person'),visible:false},
+                        {field: 'add_member', title: __('Add_member'),visible:false},
+                        {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange',visible:false},
+                        {field: 'brandtags.id', title: __('Brandtags.id'),visible:false},
                         {field: 'brandtags.tag_name', title: __('Brandtags.tag_name')},
                         {field: 'brandtags.floor', title: __('Brandtags.floor')},
                         {field: 'brandtags.fuze_person', title: __('Brandtags.fuze_person')},
-                        // {field: 'brandtags.fuze_per_tel', title: __('Brandtags.fuze_per_tel')},
+                        {field: 'brandtags.fuze_per_tel', title: __('Brandtags.fuze_per_tel')},
                         {field: 'brandtags.contact_person', title: __('Brandtags.contact_person')},
-                        // {field: 'brandtags.contact_per_tel', title: __('Brandtags.contact_per_tel')},
+                        {field: 'brandtags.contact_per_tel', title: __('Brandtags.contact_per_tel')},
                         // {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                         //操作栏,默认有编辑、删除或排序按钮,可自定义配置buttons来扩展按钮
                         {
@@ -77,6 +77,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+            $(document).on('click', '.btn-admininfo', function () {
+                $("form.form-commonsearch input[name='pro_person']").val($(this).data("type"));
+                table.bootstrapTable('refresh', {url: $(this).data("url"), pageNumber: 1});
+                return false;
+            });
         },
         add: function () {
             Controller.api.bindevent();
@@ -84,11 +89,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         edit: function () {
             Controller.api.bindevent();
         },
-        detail: function () {
-            $(document).on('click', '.btn-callback', function () {
-                Fast.api.close($("input[name=callback]").val());
-            });
-        },
+        // detail: function () {
+        //     $(document).on('click', '.btn-callback', function () {
+        //         Fast.api.close($("input[name=callback]").val());
+        //     });
+        // },
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
